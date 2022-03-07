@@ -12,7 +12,19 @@ export default class Form extends React.Component {
   };
 
   render() {
-    const { values } = this.props;
-    return <div>Form</div>;
+    const { values } = this.props.value;
+    console.log('this is values in Form', values)
+    return (
+      <form onSubmit={this.onSubmit}>
+        <input
+          value={values}
+          onChange={this.onChange}
+          type="text"
+          id="textInput"
+          placeholder="enter todo(s) here"
+        />
+        <input type="submit" />
+      </form>
+    );
   }
 }

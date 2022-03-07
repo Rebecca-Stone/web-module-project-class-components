@@ -1,17 +1,15 @@
 import React from "react";
 import Form from "./Form";
-import Todo from "./Todo";
-import TodoList from "./TodoList";
+import Todo from "./Todo"
 
-//`<App />` will hold all the data needed for this project.
 let idx = 0;
 const getIdx = () => ++idx;
 
-const toDos = [{ id: getIdx(), text: "" }];
-//All of your application data will be stored here on `<App />`.
+const todo = [{ id: getIdx(), textInput: "do the dishes" }];
+
 const initialState = {
   errorMessage: "",
-  toDos,
+  todo,
   form: {
     textInput: "",
   },
@@ -19,13 +17,12 @@ const initialState = {
 
 export default class App extends React.Component {
   state = initialState;
-  //All of your `handler` functions should live here on `<App />`.
 
   destroy = (id) => {
     console.log("this is the id we will delete", id);
     this.setState({
       ...this.state,
-      toDos: this.state.toDos.filter((todo) => todo.id !== id),
+      todo: this.state.todo.filter((todo) => todo.id !== id),
     });
   };
 
@@ -38,33 +35,30 @@ export default class App extends React.Component {
 
   addTodo = () => {
     const {
-      toDos,
+      todo,
       form: { textInput },
     } = this.state;
     const newTodo = { id: getIdx(), text: textInput };
     this.setState({
       ...this.state,
       form: initialState.form,
-      toDos: [...toDos, newTodo],
+      todo: [...todo, newTodo],
     });
   };
 
   render() {
-    const { toDos, form } = this.state;
+    const { todo, form } = this.state;
+    console.log("props are", this.props);
+    console.log("state is", this.state);
+    console.log('these are the todos', todo)
     return (
       <div>
-        {/*`<Form />` will hold your input field and your `Add Todo` and `Clear Completed` buttons. */}
+        <Todo key={todo.id} todo={todo} destroy={this.destroy} /> 
         <Form
           onChange={this.changeInput}
           value={form}
           onSubmit={this.addTodo}
         />
-        {/* `<Todo />` is a component that takes in the `todo` data and displays the task to the screen. */}
-        {/* Your input field should take in user input, and allow a user to press `Enter` or click on the `Submit Button` to add a todo to your list. */}
-        {/* Once a todo is submitted, the Todo List should re-render and show the added todo. */}
-        <Todo />
-        {/*`<TodoList />` receives your todos array and iterates over the list generating a new `<Todo />` for each element in the array. */}
-        <TodoList />
       </div>
     );
   }
