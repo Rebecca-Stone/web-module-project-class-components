@@ -2,8 +2,7 @@ import React from "react";
 
 export default class Todo extends React.Component {
   render() {
-    const {destroy, todo} = this.props; 
-    console.log('these are the toDos in todo', this.props)
+    const {destroy, todo} = this.props;
     return (
       <div>
         <h2>Todo List</h2>

@@ -5,10 +5,9 @@ import Todo from "./Todo"
 let idx = 0;
 const getIdx = () => ++idx;
 
-const todo = [{ id: getIdx(), textInput: "do the dishes" }];
+const todo = [{ id: getIdx(), text: "do the dishes" }];
 
 const initialState = {
-  errorMessage: "",
   todo,
   form: {
     textInput: "",
@@ -19,7 +18,6 @@ export default class App extends React.Component {
   state = initialState;
 
   destroy = (id) => {
-    console.log("this is the id we will delete", id);
     this.setState({
       ...this.state,
       todo: this.state.todo.filter((todo) => todo.id !== id),
@@ -48,9 +46,6 @@ export default class App extends React.Component {
 
   render() {
     const { todo, form } = this.state;
-    console.log("props are", this.props);
-    console.log("state is", this.state);
-    console.log('these are the todos', todo)
     return (
       <div>
         <Todo key={todo.id} todo={todo} destroy={this.destroy} /> 

@@ -19,16 +19,16 @@ In this project you will build an application that allows for todos to be added,
   ```js
   [
     {
-      name: 'Organize Garage',
+      name: "Organize Garage",
       id: 1528817077286, // could look different, you could use a timestamp to generate it
-      completed: false
+      completed: false,
     },
     {
-      name: 'Bake Cookies',
+      name: "Bake Cookies",
       id: 1528817084358,
-      completed: false
-    }
-  ]
+      completed: false,
+    },
+  ];
   ```
 
 - Allow for a todo's "completed" status to be toggled when clicking on an item.

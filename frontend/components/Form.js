@@ -13,7 +13,6 @@ export default class Form extends React.Component {
 
   render() {
     const { values } = this.props.value;
-    console.log('this is values in Form', values)
     return (
       <form onSubmit={this.onSubmit}>
         <input
