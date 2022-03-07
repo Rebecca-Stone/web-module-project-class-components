@@ -1,11 +1,18 @@
-import React from 'react'
+import React from "react";
 
 export default class Form extends React.Component {
+  onSubmit = (evt) => {
+    evt.preventDefault();
+    this.props.onSubmit();
+  };
+
+  onChange = (evt) => {
+    const { value, id } = evt.target;
+    this.props.onChange(id, value);
+  };
+
   render() {
-    return (
-      <div>
-        Form
-      </div>
-    )
+    const { values } = this.props;
+    return <div>Form</div>;
   }
 }
